@@ -1,3 +1,4 @@
+import Foundation
 import VComponentKit
 
 /// An electronic business card.
@@ -42,7 +43,6 @@ public struct VCard: VComponent {
     public var sound: String
     public var uid: String
     public var url: String
-    public var version: String
     public var key: String
     public var fburl: URL
     public var caladruri: URL
