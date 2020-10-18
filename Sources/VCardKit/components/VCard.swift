@@ -18,24 +18,24 @@ public struct VCard: VComponent {
 
     public var source: URL?
     public var kind: VCardKind?
-    public var xml: [String]
-    public var fn: [VCardTyped<String>] // 1 or more required
+    public var xml: [String]?
+    public var fn: [VCardTyped<String>] // required
     public var n: VCardName?
-    public var nickname: [VCardTyped<String>]
-    public var photo: [VCardTyped<URL>]
-    public var bday: [VCardDate]
+    public var nickname: [VCardTyped<String>]?
+    public var photo: [VCardTyped<URL>]?
+    public var bday: [VCardDate]?
     public var anniversary: Date?
     public var gender: VCardGender?
-    public var adr: [String]
-    public var tel: [VCardTyped<VCardTelephone>]
-    public var email: [VCardTyped<String>]
-    public var impp: [VCardTyped<URL>]
-    public var lang: VCardTyped<String>
-    public var tz: VCardTyped<String>
-    public var geo: VCardTyped<String>
-    public var title: VCardTyped<String>
-    public var role: VCardTyped<String>
-    public var org: VCardTyped<String>
+    public var adr: [String]?
+    public var tel: [VCardTyped<VCardTelephone>]?
+    public var email: [VCardTyped<String>]?
+    public var impp: [VCardTyped<URL>]?
+    public var lang: [VCardTyped<String>]?
+    public var tz: [VCardTyped<String>]?
+    public var geo: [VCardTyped<URL>]?
+    public var title: [VCardTyped<String>]?
+    public var role: [VCardTyped<String>]?
+    public var org: [VCardTyped<VCardOrganization>]?
     public var member: String
     public var related: String
     public var categories: VCardTyped<String>
