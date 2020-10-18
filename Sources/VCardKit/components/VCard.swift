@@ -91,4 +91,71 @@ public struct VCard: VComponent {
     }
 
     // uid = URL(string: "urn:uuid:\(UUID())")
+    public init(
+        source: URL? = nil,
+        kind: VCardKind? = nil,
+        xml: [String]? = nil,
+        fn: [VCardTyped<String>], // required
+        n: VCardName? = nil,
+        nickname: [VCardTyped<String>]? = nil,
+        photo: [VCardTyped<URL>]? = nil,
+        bday: [VCardDate]? = nil,
+        anniversary: Date? = nil,
+        gender: VCardGender? = nil,
+        adr: [String]? = nil,
+        tel: [VCardTyped<VCardTelephone>]? = nil,
+        email: [VCardTyped<String>]? = nil,
+        impp: [VCardTyped<URL>]? = nil,
+        lang: [VCardTyped<String>]? = nil,
+        tz: [VCardTyped<String>]? = nil,
+        geo: [VCardTyped<URL>]? = nil,
+        title: [VCardTyped<String>]? = nil,
+        role: [VCardTyped<String>]? = nil,
+        org: [VCardTyped<VCardOrganization>]? = nil,
+        member: [URL]? = nil,
+        related: [VCardRelated]? = nil,
+        categories: [VCardTyped<String>]? = nil,
+        note: [VCardTyped<String>]? = nil,
+        rev: Date? = nil,
+        sound: [VCardTyped<URL>]? = nil,
+        uid: URL? = nil,
+        url: [VCardTyped<URL>]? = nil,
+        key: [URL]? = nil,
+        fburl: [VCardTyped<URL>]? = nil,
+        caladruri: [VCardTyped<URL>]? = nil,
+        caluri: [VCardTyped<URL>]?
+    ) {
+        self.source = source
+        self.kind = kind
+        self.xml = xml
+        self.fn = fn
+        self.n = n
+        self.nickname = nickname
+        self.photo = photo
+        self.bday = bday
+        self.anniversary = anniversary
+        self.gender = gender
+        self.adr = adr
+        self.tel = tel
+        self.email = email
+        self.impp = impp
+        self.lang = lang
+        self.tz = tz
+        self.geo = geo
+        self.title = title
+        self.role = role
+        self.org = org
+        self.member = member
+        self.related = related
+        self.categories = categories
+        self.note = note
+        self.rev = rev
+        self.sound = sound
+        self.uid = uid
+        self.url = url
+        self.key = key
+        self.fburl = fburl
+        self.caladruri = caladruri
+        self.caluri = caluri
+    }
 }
