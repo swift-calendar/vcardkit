@@ -14,7 +14,6 @@ public struct VCardTelephone: VPropertyEncodable {
     }
 
     public enum TelephoneType: VEncodable {
-        case general(VCardType)
         case text
         case voice
         case fax
@@ -26,7 +25,6 @@ public struct VCardTelephone: VPropertyEncodable {
 
         public var vEncoded: String {
             switch self {
-                case .general(let g): return g.vEncoded
                 case .text: return "text"
                 case .voice: return "voice"
                 case .fax: return "fax"

@@ -19,32 +19,32 @@ public struct VCard: VComponent {
     public var source: URL?
     public var kind: VCardKind?
     public var xml: [String]
-    public var fn: [String] // 1 or more required
+    public var fn: [VCardTyped<String>] // 1 or more required
     public var n: VCardName?
-    public var nickname: [String]
-    public var photo: [URL]
+    public var nickname: [VCardTyped<String>]
+    public var photo: [VCardTyped<URL>]
     public var bday: [VCardDate]
     public var anniversary: Date?
     public var gender: VCardGender?
     public var adr: [String]
-    public var tel: [VCardTelephone]
-    public var email: [String]
-    public var impp: [URL]
-    public var lang: String
-    public var tz: String
-    public var geo: String
-    public var title: String
-    public var role: String
-    public var org: String
+    public var tel: [VCardTyped<VCardTelephone>]
+    public var email: [VCardTyped<String>]
+    public var impp: [VCardTyped<URL>]
+    public var lang: VCardTyped<String>
+    public var tz: VCardTyped<String>
+    public var geo: VCardTyped<String>
+    public var title: VCardTyped<String>
+    public var role: VCardTyped<String>
+    public var org: VCardTyped<String>
     public var member: String
     public var related: String
-    public var categories: String
-    public var note: String
-    public var sound: String
+    public var categories: VCardTyped<String>
+    public var note: VCardTyped<String>
+    public var sound: VCardTyped<String>
     public var uid: String
-    public var url: String
+    public var url: VCardTyped<String>
     public var key: String
-    public var fburl: URL
-    public var caladruri: URL
-    public var caluri: URL
+    public var fburl: VCardTyped<URL>
+    public var caladruri: VCardTyped<URL>
+    public var caluri: VCardTyped<URL>
 }
