@@ -14,8 +14,8 @@ import VCardKit
 let card = VCard(
     fn: [.just("John Doe")],
     n: VCardName(
-        surname: ["Doe"],
-        given: ["John"]
+        surname: "Doe",
+        given: "John"
     ),
     nickname: [.home("Joe")],
     gender: .male,
