@@ -26,6 +26,8 @@ let card = VCard(
     email: [.home("johndoe@example.com")]
 )
 
+print(card.vEncoded)
+
 // TODO
 ```
 
