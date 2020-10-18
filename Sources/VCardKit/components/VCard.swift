@@ -123,7 +123,7 @@ public struct VCard: VComponent {
         key: [URL]? = nil,
         fburl: [VCardTyped<URL>]? = nil,
         caladruri: [VCardTyped<URL>]? = nil,
-        caluri: [VCardTyped<URL>]?
+        caluri: [VCardTyped<URL>]? = nil
     ) {
         self.prodid = prodid
         self.source = source

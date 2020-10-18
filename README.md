@@ -11,6 +11,21 @@ A lightweight vCard (RFC 6350, `.vcf`) encoder for Swift.
 import Foundation
 import VCardKit
 
+let card = VCard(
+    fn: [.just("John Doe")],
+    n: VCardName(
+        surnames: ["Doe"],
+        given: ["John"]
+    ),
+    nickname: [.home("Joe")],
+    gender: .male,
+    tel: [
+        .work(.voice("+31987654321")),
+        .home(.text("+31123456789"))
+    ],
+    email: [.home("johndoe@example.com")]
+)
+
 // TODO
 ```
 
