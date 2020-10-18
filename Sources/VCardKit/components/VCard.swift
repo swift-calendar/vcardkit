@@ -25,7 +25,7 @@ public struct VCard: VComponent {
     public var photo: [URL]
     public var bday: [String]
     public var anniversary: Date?
-    public var gender: String
+    public var gender: VCardGender?
     public var adr: String
     public var tel: String
     public var email: String
