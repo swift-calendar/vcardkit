@@ -7,8 +7,8 @@ public enum VCardURIOrText: VPropertyEncodable {
 
     public var parameters: [(String, [String])] {
         switch self {
-            case .text(_): return [("VALUE", ["TEXT"])]
-            default: return []
+            case .text(_): return [("VALUE", ["text"])]
+            case .uri(_): return [("VALUE", ["uri"])]
         }
     }
     public var vEncoded: String {

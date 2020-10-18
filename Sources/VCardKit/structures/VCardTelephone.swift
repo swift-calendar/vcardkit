@@ -2,13 +2,12 @@ import Foundation
 import VComponentKit
 
 public struct VCardTelephone: VPropertyEncodable {
-    public let type: [TelephoneType]
-    public let value: VCardURIOrText
+    public var type: [TelephoneType]
+    public var value: String
     public var preferred: Bool
 
     public var parameters: [(String, [String])] {
         merge(parameterCollections: [
-            value.parameters,
             [("TYPE", type.map(\.vEncoded))],
             (preferred ? [("PREF", ["1"])] : [])
         ])
@@ -44,7 +43,7 @@ public struct VCardTelephone: VPropertyEncodable {
 
     public init(
         type: [TelephoneType] = [.voice],
-        value: VCardURIOrText,
+        value: String,
         preferred: Bool = false
     ) {
         self.type = type
@@ -52,41 +51,33 @@ public struct VCardTelephone: VPropertyEncodable {
         self.preferred = preferred
     }
 
-    public init(
-        type: [TelephoneType] = [.voice],
-        _ s: String,
-        preferred: Bool = false
-    ) {
-        self.init(type: type, value: .text(s), preferred: preferred)
-    }
-
     // Convenience constructors
 
     public static func text(_ s: String) -> Self {
-        Self(type: [.text], s)
+        Self(type: [.text], value: s)
     }
 
     public static func voice(_ s: String) -> Self {
-        Self(type: [.voice], s)
+        Self(type: [.voice], value: s)
     }
 
     public static func fax(_ s: String) -> Self {
-        Self(type: [.fax], s)
+        Self(type: [.fax], value: s)
     }
 
     public static func cell(_ s: String) -> Self {
-        Self(type: [.cell], s)
+        Self(type: [.cell], value: s)
     }
 
     public static func video(_ s: String) -> Self {
-        Self(type: [.video], s)
+        Self(type: [.video], value: s)
     }
 
     public static func pager(_ s: String) -> Self {
-        Self(type: [.pager], s)
+        Self(type: [.pager], value: s)
     }
 
     public static func textphone(_ s: String) -> Self {
-        Self(type: [.textphone], s)
+        Self(type: [.textphone], value: s)
     }
 }
