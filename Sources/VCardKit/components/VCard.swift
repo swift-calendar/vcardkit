@@ -90,8 +90,8 @@ public struct VCard: VComponent {
         ]
     }
 
-    // uid = URL(string: "urn:uuid:\(UUID())")
     public init(
+        prodid: VCardProductIdentifier? = VCardProductIdentifier(),
         source: URL? = nil,
         kind: VCardKind? = nil,
         xml: [String]? = nil,
@@ -116,15 +116,16 @@ public struct VCard: VComponent {
         related: [VCardRelated]? = nil,
         categories: [VCardTyped<String>]? = nil,
         note: [VCardTyped<String>]? = nil,
-        rev: Date? = nil,
+        rev: Date? = Date(),
         sound: [VCardTyped<URL>]? = nil,
-        uid: URL? = nil,
+        uid: URL? = URL(string: "urn:uuid:\(UUID().uuidString)"),
         url: [VCardTyped<URL>]? = nil,
         key: [URL]? = nil,
         fburl: [VCardTyped<URL>]? = nil,
         caladruri: [VCardTyped<URL>]? = nil,
         caluri: [VCardTyped<URL>]?
     ) {
+        self.prodid = prodid
         self.source = source
         self.kind = kind
         self.xml = xml
