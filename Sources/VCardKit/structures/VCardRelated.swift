@@ -2,7 +2,7 @@ import Foundation
 import VComponentKit
 
 public struct VCardRelated: VPropertyEncodable {
-    public var value: RelatedValue
+    public var value: VCardURIOrText
     public var type: RelatedType
 
     public var parameters: [(String, [String])] {
@@ -10,24 +10,6 @@ public struct VCardRelated: VPropertyEncodable {
     }
     public var vEncoded: String {
         value.vEncoded
-    }
-
-    public enum RelatedValue: VPropertyEncodable {
-        case uri(URL)
-        case text(String)
-
-        public var parameters: [(String, [String])] {
-            switch self {
-                case .text(_): return [("VALUE", ["TEXT"])]
-                default: return []
-            }
-        }
-        public var vEncoded: String {
-            switch self {
-                case .uri(let uri): return uri.vEncoded
-                case .text(let t): return t.vEncoded
-            }
-        }
     }
 
     public enum RelatedType: String, VEncodable {
@@ -55,7 +37,7 @@ public struct VCardRelated: VPropertyEncodable {
     }
 
     public init(
-        value: RelatedValue,
+        value: VCardURIOrText,
         type: RelatedType
     ) {
         self.value = value
