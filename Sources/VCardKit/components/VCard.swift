@@ -17,16 +17,16 @@ public struct VCard: VComponent {
     // for a list of defined properties
 
     public var source: URL?
-    public var kind: String?
+    public var kind: VCardKind?
     public var xml: [String]
     public var fn: [String] // 1 or more required
     public var n: VCardName?
     public var nickname: [String]
     public var photo: [URL]
-    public var bday: [String]
+    public var bday: [VCardDate]
     public var anniversary: Date?
     public var gender: VCardGender?
-    public var adr: String
+    public var adr: [String]
     public var tel: String
     public var email: String
     public var impp: String
