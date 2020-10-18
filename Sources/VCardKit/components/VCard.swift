@@ -49,5 +49,46 @@ public struct VCard: VComponent {
     public var caladruri: [VCardTyped<URL>]?
     public var caluri: [VCardTyped<URL>]?
 
+    public var properties: [VContentLine?] {
+        [
+            .line("VERSION", version),
+            .line("PRODID", prodid),
+            .line("SOURCE", source),
+            .line("KIND", kind),
+            .line("XML", xml),
+            .line("FN", fn),
+            .line("N", n),
+            .line("NICKNAME", nickname),
+            .line("PHOTO", photo),
+            .line("BDAY", bday),
+            .line("ANNIVERSARY", anniversary),
+            .line("GENDER", gender),
+            .line("ADR", adr),
+            .line("TEL", tel),
+            .line("EMAIL", email),
+            .line("IMPP", impp),
+            .line("LANG", lang),
+            .line("TZ", tz),
+            .line("GEO", geo),
+            .line("TITLE", title),
+            .line("ROLE", role),
+            // TODO
+            // .line("LOGO", logo),
+            .line("ORG", org),
+            .line("MEMBER", member),
+            .line("RELATED", related),
+            .line("CATEGORIES", categories),
+            .line("NOTE", note),
+            .line("REV", rev),
+            .line("SOUND", sound),
+            .line("UID", uid),
+            .line("URL", url),
+            .line("KEY", key),
+            .line("FBURL", fburl),
+            .line("CALADRURI", caladruri),
+            .line("CALURI", caluri)
+        ]
+    }
+
     // uid = URL(string: "urn:uuid:\(UUID())")
 }
