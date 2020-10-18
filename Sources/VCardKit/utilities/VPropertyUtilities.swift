@@ -7,16 +7,16 @@ private struct Pair<I>: Comparable & Hashable where I: Comparable & Hashable {
     }
 }
 
-private struct Indexed<I, T>: Comparable & Hashable where I: Comparable & Hashable, T: Hashable {
+private struct Indexed<I, T>: Hashable where I: Hashable, T: Hashable {
     let index: I
     let value: T
 
     static func ==(lhs: Self, rhs: Self) -> Bool {
-        lhs.index == rhs.index
+        lhs.value == rhs.value
     }
 
-    static func <(lhs: Self, rhs: Self) -> Bool {
-        lhs.index < rhs.index
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(value)
     }
 }
 
@@ -27,6 +27,6 @@ func merge(parameterCollections: [[(String, [String])]]) -> [(String, [String])]
             .enumerated()
             .map { (y, t) in (Indexed(index: Pair(x: x, y: y), value: t.0), t.1) }) }
         .reduce([:]) { $0.merging($1, uniquingKeysWith: +) }
-        .sorted { $0.key < $1.key }
+        .sorted { $0.key.index < $1.key.index }
         .map { (i, v) in (i.value, v) }
 }
