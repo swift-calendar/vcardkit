@@ -3,15 +3,19 @@ import VComponentKit
 
 public struct VCardTelephone: VPropertyEncodable {
     public let type: [TelephoneType]
-    public let uri: URL
+    public let value: VCardURIOrText
     public var preferred: Bool
 
     public var parameters: [(String, [String])] {
-        [("VALUE", ["uri"]), ("TYPE", type.map(\.vEncoded))] + (preferred ? [("PREF", ["1"])] : [])
+        merge(parameterCollections: [
+            value.parameters,
+            [("TYPE", type.map(\.vEncoded))],
+            (preferred ? [("PREF", ["1"])] : [])
+        ])
     }
 
     public var vEncoded: String {
-        uri.vEncoded
+        value.vEncoded
     }
 
     public enum TelephoneType: VEncodable {
@@ -40,11 +44,11 @@ public struct VCardTelephone: VPropertyEncodable {
 
     public init(
         type: [TelephoneType] = [.voice],
-        uri: URL,
+        value: VCardURIOrText,
         preferred: Bool = false
     ) {
         self.type = type
-        self.uri = uri
+        self.value = value
         self.preferred = preferred
     }
 
@@ -53,7 +57,7 @@ public struct VCardTelephone: VPropertyEncodable {
         _ s: String,
         preferred: Bool = false
     ) {
-        self.init(type: type, uri: URL(string: "tel:\(s)")!, preferred: preferred)
+        self.init(type: type, value: .text(s), preferred: preferred)
     }
 
     // Convenience constructors
