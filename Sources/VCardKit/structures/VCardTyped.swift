@@ -6,7 +6,7 @@ public struct VCardTyped<T>: VPropertyEncodable where T: VPropertyEncodable {
     public var type: VCardType?
 
     public var parameters: [(String, [String])] {
-        merge([type.map { [("TYPE", [$0.vEncoded])] } ?? [], wrappedValue.parameters])
+        merge(parameterCollections: [type.map { [("TYPE", [$0.vEncoded])] } ?? [], wrappedValue.parameters])
     }
 
     public var vEncoded: String {
@@ -31,10 +31,4 @@ public struct VCardTyped<T>: VPropertyEncodable where T: VPropertyEncodable {
     public static func work(_ wrappedValue: T) -> VCardTyped<T> {
         VCardTyped(wrappedValue: wrappedValue, type: .work)
     }
-}
-
-fileprivate func merge(_ parameterCollections: [[(String, [String])]]) -> [(String, [String])] {
-    Array(parameterCollections
-        .map { Dictionary(uniqueKeysWithValues: $0) }
-        .reduce([:]) { $0.merging($1, uniquingKeysWith: +) })
 }

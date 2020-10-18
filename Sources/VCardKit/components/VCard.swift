@@ -11,7 +11,7 @@ public struct VCard: VComponent {
     /// See https://tools.ietf.org/html/rfc6350#section-6.7.9
     public let version = "4.0"
 
-    public var prodid: VCardProductIdentifier
+    public var prodid: VCardProductIdentifier?
 
     // See https://tools.ietf.org/html/rfc6350#section-10.3.1
     // for a list of defined properties
@@ -36,15 +36,18 @@ public struct VCard: VComponent {
     public var title: [VCardTyped<String>]?
     public var role: [VCardTyped<String>]?
     public var org: [VCardTyped<VCardOrganization>]?
-    public var member: String
-    public var related: String
-    public var categories: VCardTyped<String>
-    public var note: VCardTyped<String>
-    public var sound: VCardTyped<String>
-    public var uid: String
-    public var url: VCardTyped<String>
-    public var key: String
-    public var fburl: VCardTyped<URL>
-    public var caladruri: VCardTyped<URL>
-    public var caluri: VCardTyped<URL>
+    public var member: [URL]?
+    public var related: [VCardRelated]?
+    public var categories: [VCardTyped<String>]?
+    public var note: [VCardTyped<String>]?
+    public var rev: Date?
+    public var sound: [VCardTyped<URL>]?
+    public var uid: URL?
+    public var url: [VCardTyped<URL>]?
+    public var key: [URL]?
+    public var fburl: [VCardTyped<URL>]?
+    public var caladruri: [VCardTyped<URL>]?
+    public var caluri: [VCardTyped<URL>]?
+
+    // uid = URL(string: "urn:uuid:\(UUID())")
 }
