@@ -4,9 +4,10 @@ import VComponentKit
 public struct VCardTelephone: VPropertyEncodable {
     public let type: [TelephoneType]
     public let uri: URL
+    public var preferred: Bool
 
     public var parameters: [(String, [String])] {
-        [("VALUE", ["uri"]), ("TYPE", type.map(\.vEncoded))]
+        [("VALUE", ["uri"]), ("TYPE", type.map(\.vEncoded))] + (preferred ? [("PREF", ["1"])] : [])
     }
 
     public var vEncoded: String {
@@ -39,17 +40,20 @@ public struct VCardTelephone: VPropertyEncodable {
 
     public init(
         type: [TelephoneType] = [.voice],
-        uri: URL
+        uri: URL,
+        preferred: Bool = false
     ) {
         self.type = type
         self.uri = uri
+        self.preferred = preferred
     }
 
     public init(
         type: [TelephoneType] = [.voice],
-        _ s: String
+        _ s: String,
+        preferred: Bool = false
     ) {
-        self.init(type: type, uri: URL(string: "tel:\(s)")!)
+        self.init(type: type, uri: URL(string: "tel:\(s)")!, preferred: preferred)
     }
 
     // Convenience constructors
